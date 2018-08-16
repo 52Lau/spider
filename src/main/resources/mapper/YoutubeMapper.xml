@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lau.spider.mapper.YoutubeMapper" >
+  <resultMap id="BaseResultMap" type="com.lau.spider.model.Youtube" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="videoId" property="videoid" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="catId" property="catid" jdbcType="INTEGER" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="isVideoAudio" property="isvideoaudio" jdbcType="INTEGER" />
+    <result column="isSubtitle" property="issubtitle" jdbcType="INTEGER" />
+    <result column="isClip" property="isclip" jdbcType="INTEGER" />
+    <result column="isSend" property="issend" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

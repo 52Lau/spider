@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lau.spider.mapper.MusicMapper" >
+  <resultMap id="BaseResultMap" type="com.lau.spider.model.Music" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="likedCount" property="likedcount" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="songId" property="songid" jdbcType="INTEGER" />
+    <result column="songName" property="songname" jdbcType="VARCHAR" />
+    <result column="songAuthor" property="songauthor" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

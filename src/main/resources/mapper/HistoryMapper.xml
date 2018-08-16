@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lau.spider.mapper.HistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.lau.spider.model.History" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="confidence" property="confidence" jdbcType="VARCHAR" />
+    <result column="level1" property="level1" jdbcType="VARCHAR" />
+    <result column="level2" property="level2" jdbcType="VARCHAR" />
+    <result column="mention" property="mention" jdbcType="VARCHAR" />
+    <result column="bdbkUrl" property="bdbkurl" jdbcType="VARCHAR" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="option" property="option" jdbcType="VARCHAR" />
+    <result column="bdbkKgId" property="bdbkkgid" jdbcType="VARCHAR" />
+    <result column="bookName" property="bookname" jdbcType="VARCHAR" />
+    <result column="articleName" property="articlename" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

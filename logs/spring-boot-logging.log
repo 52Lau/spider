@@ -1,0 +1,94 @@
+2018/08/15-01:02 [restartedMain] INFO  com.lau.spider.SpiderApplication- Starting SpiderApplication on Ying with PID 9228 (D:\IDEA\spider\target\classes started by 20123 in D:\IDEA\spider)
+2018/08/15-01:02 [restartedMain] INFO  com.lau.spider.SpiderApplication- The following profiles are active: dev
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext- Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@966c6c: startup date [Wed Aug 15 01:02:04 CST 2018]; root of context hierarchy
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5a0e10d4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 9090 (http)
+2018/08/15-01:02 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2018/08/15-01:02 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet Engine: Apache Tomcat/8.5.28
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 685 ms
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean- Servlet dispatcherServlet mapped to [/]
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean- Servlet statViewServlet mapped to [/druid/*]
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean- Mapping filter: 'characterEncodingFilter' to: [/*]
+2018/08/15-01:02 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean- Mapping filter: 'webStatFilter' to urls: [/*]
+2018/08/15-01:02 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-3 - Starting...
+2018/08/15-01:02 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-3 - Start completed.
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Building JPA container EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:02 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper- HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018/08/15-01:02 [restartedMain] INFO  org.hibernate.dialect.Dialect- HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:02 [restartedMain] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration- spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/{page}]}" onto public java.lang.String com.lau.spider.controller.PageController.path(java.lang.String)
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/list],produces=[application/json;charset=utf-8]}" onto public java.lang.String com.lau.spider.controller.YoutubeController.list(com.lau.spider.model.Youtube,int,int)
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/getList]}" onto public java.lang.String com.lau.spider.youtube.YouTobeSpider.run(java.lang.String) throws java.lang.InterruptedException
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/ssh]}" onto public java.lang.String com.lau.spider.youtube.YouTobeSpider.text()
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping- Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter- Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@966c6c: startup date [Wed Aug 15 01:02:04 CST 2018]; root of context hierarchy
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer- ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer- LiveReload server is running on port 35729
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Registering beans for JMX exposure on startup
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Bean with name 'dataSource' has been autodetected for JMX exposure
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat started on port(s): 9090 (http) with context path ''
+2018/08/15-01:02 [restartedMain] INFO  com.lau.spider.SpiderApplication- Started SpiderApplication in 1.525 seconds (JVM running for 42.678)
+2018/08/15-01:02 [restartedMain] INFO  com.lau.spider.SpiderApplication- 服务启动完成!
+2018/08/15-01:02 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener- Condition evaluation unchanged
+2018/08/15-01:02 [http-nio-9090-exec-1] INFO  org.apache.tomcat.util.http.parser.Cookie- A cookie header was received [1534170868; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1534258301] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+2018/08/15-01:02 [http-nio-9090-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018/08/15-01:02 [http-nio-9090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet- FrameworkServlet 'dispatcherServlet': initialization started
+2018/08/15-01:02 [http-nio-9090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet- FrameworkServlet 'dispatcherServlet': initialization completed in 34 ms
+2018/08/15-01:03 [Thread-35] INFO  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext- Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@966c6c: startup date [Wed Aug 15 01:02:04 CST 2018]; root of context hierarchy
+2018/08/15-01:03 [Thread-35] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Unregistering JMX-exposed beans on shutdown
+2018/08/15-01:03 [Thread-35] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Unregistering JMX-exposed beans
+2018/08/15-01:03 [Thread-35] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Closing JPA EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:03 [Thread-35] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-3 - Shutdown initiated...
+2018/08/15-01:03 [Thread-35] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-3 - Shutdown completed.
+2018/08/15-01:03 [restartedMain] INFO  com.lau.spider.SpiderApplication- Starting SpiderApplication on Ying with PID 9228 (D:\IDEA\spider\target\classes started by 20123 in D:\IDEA\spider)
+2018/08/15-01:03 [restartedMain] INFO  com.lau.spider.SpiderApplication- The following profiles are active: dev
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext- Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@152cdca: startup date [Wed Aug 15 01:03:45 CST 2018]; root of context hierarchy
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5a0e10d4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 9090 (http)
+2018/08/15-01:03 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2018/08/15-01:03 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet Engine: Apache Tomcat/8.5.28
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 648 ms
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean- Servlet dispatcherServlet mapped to [/]
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean- Servlet statViewServlet mapped to [/druid/*]
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean- Mapping filter: 'characterEncodingFilter' to: [/*]
+2018/08/15-01:03 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean- Mapping filter: 'webStatFilter' to urls: [/*]
+2018/08/15-01:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-4 - Starting...
+2018/08/15-01:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-4 - Start completed.
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Building JPA container EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:03 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper- HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018/08/15-01:03 [restartedMain] INFO  org.hibernate.dialect.Dialect- HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:03 [restartedMain] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration- spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/{page}]}" onto public java.lang.String com.lau.spider.controller.PageController.path(java.lang.String)
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/list],produces=[application/json;charset=utf-8]}" onto public java.lang.String com.lau.spider.controller.YoutubeController.list(com.lau.spider.model.Youtube,int,int)
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/getList]}" onto public java.lang.String com.lau.spider.youtube.YouTobeSpider.run(java.lang.String) throws java.lang.InterruptedException
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/youtube/ssh]}" onto public java.lang.String com.lau.spider.youtube.YouTobeSpider.text()
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping- Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping- Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter- Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@152cdca: startup date [Wed Aug 15 01:03:45 CST 2018]; root of context hierarchy
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer- ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer- LiveReload server is running on port 35729
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Registering beans for JMX exposure on startup
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Bean with name 'dataSource' has been autodetected for JMX exposure
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat started on port(s): 9090 (http) with context path ''
+2018/08/15-01:03 [restartedMain] INFO  com.lau.spider.SpiderApplication- Started SpiderApplication in 1.483 seconds (JVM running for 143.886)
+2018/08/15-01:03 [restartedMain] INFO  com.lau.spider.SpiderApplication- 服务启动完成!
+2018/08/15-01:03 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener- Condition evaluation unchanged
+2018/08/15-01:04 [Thread-41] INFO  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext- Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@152cdca: startup date [Wed Aug 15 01:03:45 CST 2018]; root of context hierarchy
+2018/08/15-01:04 [Thread-41] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Unregistering JMX-exposed beans on shutdown
+2018/08/15-01:04 [Thread-41] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter- Unregistering JMX-exposed beans
+2018/08/15-01:04 [Thread-41] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean- Closing JPA EntityManagerFactory for persistence unit 'default'
+2018/08/15-01:04 [Thread-41] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-4 - Shutdown initiated...
+2018/08/15-01:04 [Thread-41] INFO  com.zaxxer.hikari.HikariDataSource- HikariPool-4 - Shutdown completed.
