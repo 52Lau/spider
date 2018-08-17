@@ -24,6 +24,8 @@
 <body>
 <div class="x-body" ng-app="myApp" ng-controller="formCtrl">
     <form class="layui-form" action="">
+        <select ng-model="com" ng-options="x.game_id as x.game_name for x in game_info">
+        </select>
         <input type="text" value="{{filtStatus[youtube.issubtitle]}}">
         <input type="hidden" class="layui-input" name="id" id="id" ng-model="youtube.id">
         <div class="layui-form-item layui-form-text">
@@ -55,8 +57,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="like[isvideoaudio]" title="压制" ng-checked="true" >
-                <input type="checkbox" name="like[issubtitle]" title="字幕"  ng-checked="true">
+               <#-- <input type="checkbox" name="like[isvideoaudio]" title="压制" ng-checked="true" >-->
+                <input type="checkbox" name="like[issubtitle]" title="字幕"  ng-checked="{{filtStatus[youtube.issubtitle]}}">
                 <input type="checkbox" name="like[isclip]" title="剪辑"  ng-checked="{{filtStatus[youtube.isclip]}}">
                 <input type="checkbox" name="like[issend]" title="发布"  ng-checked="{{filtStatus[youtube.issend]}}">
             </div>
@@ -135,7 +137,16 @@
         $http.get("/youtube/get/404")
                 .then(function (result) {
                     $scope.youtube = result.data;
+                    $scope.com =result.data.issubtitle;
                 });
+        $scope.game_info =  [
+            {game_id : 0 , game_name:'全部游戏'},
+            {game_id : 1 , game_name:'穿越火线'},
+            {game_id : 2 , game_name:'地下城与勇士'},
+            {game_id : 3 , game_name:'使命召唤'},
+            {game_id : 4 , game_name:'英雄联盟'},
+            {game_id : 5 , game_name:'逆战'},
+        ];
 
         $scope.reset = function() {
             $scope.youtube = angular.copy($scope.youtube);
