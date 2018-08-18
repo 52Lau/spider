@@ -9,6 +9,7 @@ import com.lau.spider.service.YoutubeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -37,9 +38,11 @@ public class YoutubeController {
     }
 
     @GetMapping("/get/{id}")
-    public String get(@PathVariable("id") int id){
+    public ModelAndView get(@PathVariable("id") int id){
+        ModelAndView result = new ModelAndView("order-edit2");
         Youtube youtube = youtubeService.selectByKey(id);
-        return JSON.toJSONString(youtube);
+        result.addObject("youtube", youtube);
+        return result;
     }
 
 

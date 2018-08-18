@@ -210,6 +210,16 @@
             <artifactId>hutool-all</artifactId>
             <version>4.0.12</version>
         </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.javax.servlet.jsp.jstl</groupId>
+            <artifactId>javax.servlet.jsp.jstl</artifactId>
+            <version>1.1.custom</version>
+        </dependency>
 
     </dependencies>
 

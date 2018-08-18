@@ -125,10 +125,10 @@
                 , {field: 'catid', title: '分类', width: 60}
                 , {field: 'videoid', title: '视频ID', width: 120, sort: true}
                 , {field: 'createdate', title: '日期', width: 180, templet: '#createdate'}
-                , {field: 'isvideoaudio', title: '压制', width: 60, templet: '#isvideoaudioTpl'}
-                , {field: 'issubtitle', title: '字幕', width: 60, templet: '#issubtitleTpl'}
-                , {field: 'isclip', title: '剪辑', width: 60, templet: '#issubtitleTpl'}
-                , {field: 'issend', title: '发布', width: 60, templet: '#issubtitleTpl'}
+                , {field: 'isvideoaudio', title: '压制', width: 60, }
+                , {field: 'issubtitle', title: '字幕', width: 60, }
+                , {field: 'isclip', title: '剪辑', width: 60, }
+                , {field: 'issend', title: '发布', width: 60, }
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
 
             ]]
@@ -177,9 +177,12 @@
             var data = obj.data,
                     layEvent = obj.event;
             if (layEvent === 'detail') {
-                x_admin_show('查看', 'order-detail.html', 600, 400)
-            } else if (layEvent === 'del') {
-                layer.confirm('真的删除行么', function (index) {
+                //alert(data.id)
+                x_admin_show('查看', '/youtube/get/404', 600, 400)
+            }else if (layEvent === 'edit') {
+                x_admin_show('编辑', 'order-edit.html', 600, 600)
+            }else if (layEvent === 'del') {
+                layer.confirm('真的删除行么00', function (index) {
                     console.log(data);
                     $.ajax({
                         url: "http://localhost:3058/web/uv/delete",
@@ -200,8 +203,6 @@
                     });
                 });
 
-            } else if (layEvent === 'edit') {
-                x_admin_show('编辑', 'order-edit.html', 600, 600)
             }
 
 
