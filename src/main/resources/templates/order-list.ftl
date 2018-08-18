@@ -125,10 +125,10 @@
                 , {field: 'catid', title: '分类', width: 60}
                 , {field: 'videoid', title: '视频ID', width: 120, sort: true}
                 , {field: 'createdate', title: '日期', width: 180, templet: '#createdate'}
-                , {field: 'isvideoaudio', title: '压制', width: 60, }
-                , {field: 'issubtitle', title: '字幕', width: 60, }
-                , {field: 'isclip', title: '剪辑', width: 60, }
-                , {field: 'issend', title: '发布', width: 60, }
+                , {field: 'isvideoaudio', title: '压制', width: 60,templet: '#isvideoaudioTpl' }
+                , {field: 'issubtitle', title: '字幕', width: 60,templet: '#isvideoaudioTpl' }
+                , {field: 'isclip', title: '剪辑', width: 60,templet: '#isvideoaudioTpl' }
+                , {field: 'issend', title: '发布', width: 60,templet: '#isvideoaudioTpl' }
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
 
             ]]
@@ -178,7 +178,7 @@
                     layEvent = obj.event;
             if (layEvent === 'detail') {
                 //alert(data.id)
-                x_admin_show('查看', '/youtube/get/404', 600, 400)
+                x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
             }else if (layEvent === 'edit') {
                 x_admin_show('编辑', 'order-edit.html', 600, 600)
             }else if (layEvent === 'del') {

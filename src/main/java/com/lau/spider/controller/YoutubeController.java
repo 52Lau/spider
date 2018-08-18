@@ -44,7 +44,17 @@ public class YoutubeController {
         result.addObject("youtube", youtube);
         return result;
     }
+    @GetMapping("/getById/{id}")
+    public String getById(@PathVariable("id") int id){
+        Youtube youtube = youtubeService.selectByKey(id);
+        return JSON.toJSONString(youtube);
+    }
 
+    @PostMapping("/update")
+    public String update(){
+
+
+    }
 
 
 }

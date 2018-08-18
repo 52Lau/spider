@@ -26,11 +26,7 @@
 <div class="x-body" ng-app="myApp" ng-controller="formCtrl">
     <form class="layui-form" action="">
 
-        <label ng-repeat="role in roles">
-            <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}
-        </label>
-
-        <#--<input type="text" value="{{filtStatus[youtube.issubtitle]}}">-->
+        <input type="text" value="{{filtStatus[youtube.issubtitle]}}">
         <input type="hidden" class="layui-input" name="id" id="id" ng-model="youtube.id">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">视频名字</label>
@@ -61,13 +57,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <#--<label ng-repeat="role in roles">
-                    <input type="checkbox" checklist-model="user.roles" title="{{role}}" checklist-value="role">
-                </label>-->
-               <#-- <input type="checkbox" name="like[isvideoaudio]" title="压制" ng-checked="true" >-->
-                <input type="checkbox" name="like[issubtitle]" title="字幕"  ng-checked="{{filtStatus[youtube.issubtitle]}}">
-                <input type="checkbox" name="like[isclip]" title="剪辑"  ng-checked="{{filtStatus[youtube.isclip]}}">
-                <input type="checkbox" name="like[issend]" title="发布"  ng-checked="{{filtStatus[youtube.issend]}}">
+               <input type="checkbox" name="like[isvideoaudio]" title="压制" >
+                <input type="checkbox" name="like[issubtitle]" title="字幕" {{filtStatus[youtube.issubtitle]}}>
+                <input type="checkbox" name="like[isclip]" title="剪辑"  {{filtStatus[youtube.isclip]}}>
+                <input type="checkbox" name="like[issend]" title="发布"  {{filtStatus[youtube.issend]}}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -142,10 +135,9 @@
     //var app = angular.module("myApp",["checklist-model"]);
     var app = angular.module('myApp', ["checklist-model"]);
     app.controller('formCtrl', function($scope, $http) {
-        $http.get("/youtube/get/404")
+        $http.get("/youtube/getById/404")
                 .then(function (result) {
                     $scope.youtube = result.data;
-                    $scope.ss=result.data.issend;
                 });
 
         $scope.roles = [
@@ -162,8 +154,8 @@
             $scope.youtube = angular.copy($scope.youtube);
         };
         $scope.filtStatus= {
-            2:"false",
-            1:"true",
+            1:"checked",
+            0:"111",
         }
 
         $scope.reset();
