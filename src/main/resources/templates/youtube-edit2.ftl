@@ -23,10 +23,10 @@
 </head>
 
 <body>
-<div class="x-body" ng-app="myApp" ng-controller="formCtrl">
-    <form class="layui-form" action="">
+<div class="x-body" id="myDiv">
+    <form class="layui-form" id="form1" >
 
-        <input type="hidden" class="layui-input" name="id" id="id" value="${youtube.id}" >
+        <input type="hidden" class="layui-input" name="id"  value="${youtube.id}" >
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">视频名字</label>
             <div class="layui-input-block">
@@ -59,16 +59,16 @@
             <label class="layui-form-label">日期</label>
             <div class="layui-input-block">
                 <#--ng-model="youtube.createdate"-->
-                <input class="layui-input" placeholder="时间" name="createdate" id="start" value="${youtube.createdate?string('yyyy-MM-dd')} ">
+                <input class="layui-input" placeholder="时间" name="createdate" id="start" value="${youtube.createdate?string('yyyy-MM-dd HH:mm:ss')} ">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-               <input type="checkbox" name="isvideoaudio" title="压制" <#if youtube.isvideoaudio=0> checked</#if> >
-                <input type="checkbox" name="issubtitle" title="字幕" <#if youtube.issubtitle=0> checked</#if> >
-                <input type="checkbox" name="isclip" title="剪辑"  <#if youtube.isclip=0> checked</#if>>
-                <input type="checkbox" name="issend" title="发布"  <#if youtube.issend=0> checked</#if>>
+               <input type="checkbox" name="isvideoaudio" title="压制" <#if youtube.isvideoaudio=0> checked</#if> value="0">
+                <input type="checkbox" name="issubtitle" title="字幕" <#if youtube.issubtitle=0> checked</#if> value="0">
+                <input type="checkbox" name="isclip" title="剪辑"  <#if youtube.isclip=0> checked</#if> value="0">
+                <input type="checkbox" name="issend" title="发布"  <#if youtube.issend=0> checked</#if> value="0">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -77,11 +77,11 @@
                 <textarea name="remarks" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
-
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <input class="layui-btn" type="button" value="提交" onclick="login()">
+                <#--<button class="layui-btn" id="btn-login" onclick="login()"  >立即提交</button>-->
+                <input class="layui-btn"  type="reset" value="重置">
             </div>
         </div>
     </form>
@@ -109,7 +109,7 @@
         var form = layui.form
                 ,layer = layui.layer;
 
-        //自定义验证规则
+        /*//自定义验证规则
         form.verify({
             nikename: function(value){
                 if(value.length < 5){
@@ -136,29 +136,68 @@
                 parent.layer.close(index);
             });
             return false;
-        });
+        });*/
 
-        function login() {
-            $.ajax({
-                //几个参数需要注意一下
-                type: "POST",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/users/login" ,//url
-                data: $('#form1').serialize(),
-                success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    if (result.resultCode == 200) {
-                        alert("SUCCESS");
-                    }
-                    ;
-                },
-                error : function() {
-                    alert("异常！");
-                }
-            });
-        }
+
 
     });
+</script>
+
+<script type="text/javascript">
+    $.fn.serializeObject = function()
+    {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+    function login() {
+        var v=$('#form1').serializeObject();
+        $.ajax({
+            //几个参数需要注意一下
+            type: "PUT",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "${request.contextPath}/youtube/update" ,//url
+            data: JSON.stringify(v),
+            contentType : "application/json",
+            success: function (result) {
+                if (result==200) {
+                    //加载层
+                    //var indexs = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+                    //layer.msg('修改成功！');
+                    layer.msg('玩命卖萌中', function(){
+                        //关闭后的操作
+                        //window.parent.location.reload();
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layui.table.reload('youtubeTable',{page:{curr:1}});
+                        parent.layer.close(index);
+                    });
+                    /*var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);//关闭当前页*/
+                    //location.replace(location.href);
+
+
+
+                }else{
+                    layer.msg('修改失败！');
+                }
+
+            },
+            error : function() {
+                alert("error");
+            }
+        });
+    }
+
 </script>
 <#--<script>
     //var app = angular.module("myApp",["checklist-model"]);

@@ -13,5 +13,6 @@
     <result column="songId" property="songid" jdbcType="INTEGER" />
     <result column="songName" property="songname" jdbcType="VARCHAR" />
     <result column="songAuthor" property="songauthor" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

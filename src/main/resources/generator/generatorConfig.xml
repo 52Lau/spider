@@ -7,8 +7,11 @@
     <properties resource="application.properties"/>
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-        <property name="beginningDelimiter" value="`"/>
-        <property name="endingDelimiter" value="`"/>
+        <!-- 自动识别数据库关键字，默认false -->
+        <property name="autoDelimitKeywords" value="true" />
+        <!--可以使用``包括字段名，避免字段名与sql保留字冲突报错 -->
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
 
         <property name="javaFileEncoding" value="UTF-8"/>
 
@@ -17,9 +20,9 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/baidu"
-                        userId="root"
-                        password="root">
+                        connectionURL="jdbc:mysql://132.232.26.166:3306/baidu"
+                        userId="baidu"
+                        password="88Eai8BK8ZzSmDYB">
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.lau.spider.model" targetProject="src/main/java"/>
@@ -29,11 +32,12 @@
         <javaClientGenerator targetPackage="com.lau.spider.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="%">
+        <table tableName="history" delimitAllColumns="true">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->
             <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
         </table>
+
     </context>
 </generatorConfiguration>

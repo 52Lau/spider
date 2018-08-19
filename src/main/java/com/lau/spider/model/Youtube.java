@@ -39,6 +39,7 @@ public class Youtube {
      * 创建时间
      */
     @Column(name = "createDate")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdate;
 
     /**

@@ -9,11 +9,12 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./static/css/font.css">
         <link rel="stylesheet" href="./static/css/xadmin.css">
+        <script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>
     </head>
     <body>
-    <div class="x-body layui-anim layui-anim-up">
+    <div class="x-body layui-anim layui-anim-up" ng-app="myApp" ng-controller="customersCtrl">
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">test</span>！当前时间:2018-04-25 20:50:53</blockquote>
+            <span class="x-red">test</span>！当前时间:${.now?string["yyyy-MM-dd HH:mm:ss"]}</blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
             <div class="layui-field-box">
@@ -25,23 +26,23 @@
                                     <ul class="layui-row layui-col-space10 layui-this">
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
+                                                <h3>历史素材</h3>
                                                 <p>
-                                                    <cite>66</cite></p>
+                                                    <cite>{{welcome.historyCount}}</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>会员数</h3>
+                                                <h3>音乐素材</h3>
                                                 <p>
-                                                    <cite>12</cite></p>
+                                                    <cite>{{welcome.musicCount}}</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>回复数</h3>
+                                                <h3>视频素材</h3>
                                                 <p>
-                                                    <cite>99</cite></p>
+                                                    <cite>{{welcome.youtubeCount}}</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
@@ -78,36 +79,11 @@
             <div class="layui-field-box">
                 <table class="layui-table" lay-skin="line">
                     <tbody>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">新版x-admin 2.0上线了</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
-                            </td>
-                        </tr>
+                    <tr ng-repeat="x in wish">
+                        <td >
+                            <a class="x-a" href="#">{{x.context}}</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -161,26 +137,27 @@
                     <tbody>
                         <tr>
                             <th>版权所有</th>
-                            <td>xxxxx(xxxx)
-                                <a href="http://www.xxx.com/" class='x-a' target="_blank">访问官网</a></td>
+                            <td>人生可否变作漫长浪漫程序！
+                                <a href="https://www.lau52y.cn/" class='x-a' target="_blank">访问官网</a></td>
                         </tr>
                         <tr>
                             <th>开发者</th>
-                            <td>马志斌(113664000@qq.com)</td></tr>
+                            <td>人生可否变作漫长浪漫程序！</td></tr>
                     </tbody>
                 </table>
             </div>
         </fieldset>
-        <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote>
+        <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,x-admin</blockquote>
     </div>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+            $http.get("/welcome/info")
+                    .then(function (result) {
+                        $scope.welcome = result.data;
+                        $scope.wish = result.data.data;
+                    });
+        });
+    </script>
     </body>
 </html>

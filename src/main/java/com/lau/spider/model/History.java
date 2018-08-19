@@ -8,68 +8,92 @@ public class History {
      * id
      */
     @Id
+    @Column(name = "`id`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /**
      * 匹配度
      */
+    @Column(name = "`confidence`")
     private String confidence;
 
     /**
      * 第一层词义
      */
+    @Column(name = "`level1`")
     private String level1;
 
     /**
      * 第二层词义
      */
+    @Column(name = "`level2`")
     private String level2;
 
     /**
      * 分词
      */
+    @Column(name = "`mention`")
     private String mention;
 
     /**
      * 百度百科url
      */
-    @Column(name = "bdbkUrl")
+    @Column(name = "`bdbkUrl`")
     private String bdbkurl;
 
     /**
      * 词义描述
      */
+    @Column(name = "`desc`")
     private String desc;
 
     /**
      * 创建时间
      */
-    @Column(name = "createDate")
+    @Column(name = "`createDate`")
     private Date createdate;
 
     /**
      * 分析的描述
      */
+    @Column(name = "`option`")
     private String option;
 
     /**
      * 百度百科id
      */
-    @Column(name = "bdbkKgId")
+    @Column(name = "`bdbkKgId`")
     private String bdbkkgid;
 
     /**
      * 书名，比如：史记，宋史
      */
-    @Column(name = "bookName")
+    @Column(name = "`bookName`")
     private String bookname;
 
     /**
      * 文章名，比如：夏本纪第二
      */
-    @Column(name = "articleName")
+    @Column(name = "`articleName`")
     private String articlename;
+
+    /**
+     * 状态
+     */
+    @Column(name = "`status`")
+    private Integer status;
+
+    @Column(name = "`issend`")
+    private Integer issend;
+
+    public Integer getIssend() {
+        return issend;
+    }
+
+    public void setIssend(Integer issend) {
+        this.issend = issend;
+    }
 
     /**
      * 获取id
@@ -285,5 +309,23 @@ public class History {
      */
     public void setArticlename(String articlename) {
         this.articlename = articlename;
+    }
+
+    /**
+     * 获取状态
+     *
+     * @return status - 状态
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * 设置状态
+     *
+     * @param status 状态
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

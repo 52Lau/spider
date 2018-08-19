@@ -26,9 +26,9 @@
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">演示</a>
+        <a href="">内容列表</a>
         <a>
-          <cite>导航元素</cite></a>
+          <cite>歷史内容列表</cite></a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
        href="javascript:location.replace(location.href);" title="刷新">
@@ -36,39 +36,45 @@
 </div>
 <div class="x-body">
     <div class="layui-row">
+        <div class="layui-input-inline">
         <#--<form class="layui-form layui-col-md12 x-so" id="youtubeform">-->
             <input class="layui-input" placeholder="创建时间" name="createdate" id="start">
-            <div class="layui-input-inline">
-                <select name="catid" id="catid">
-                    <option value="">分类</option>
-                    <option value="0">科技</option>
-                    <option value="1">军事</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="isvideoaudio" id="isvideoaudio">
-                    <option value="">压制状态</option>
-                    <option value="0">已压制</option>
-                    <option value="1">未压制</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="issubtitle" id="issubtitle">
-                    <option value="">字幕状态</option>
-                    <option value="0">已确认</option>
-                    <option value="1">待确认</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="isclip" id="isclip">
-                    <option value="">剪辑状态</option>
-                    <option value="0">已剪辑</option>
-                    <option value="1">未剪辑</option>
-                </select>
-            </div>
-            <input type="text" name="name" id="name" placeholder="视频名" autocomplete="off" class="layui-input">
-            <input type="text" name="videoid" id="videoid" placeholder="视频id" autocomplete="off" class="layui-input">
-            <button class="layui-btn" id="layuibtn" data-type="reload">搜索</button>
+        </div>
+        <div class="layui-input-inline">
+            <select name="catid" id="catid" style="height: 40px;">
+                <option value="">分类</option>
+                <option value="0">科技</option>
+                <option value="1">军事</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="isvideoaudio" id="isvideoaudio" style="height: 40px;">
+                <option value="">压制状态</option>
+                <option value="0">已压制</option>
+                <option value="1">未压制</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="issubtitle" id="issubtitle" style="height: 40px;">
+                <option value="">字幕状态</option>
+                <option value="0">已确认</option>
+                <option value="1">待确认</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="isclip" id="isclip" style="height: 40px;">
+                <option value="">剪辑状态</option>
+                <option value="0">已剪辑</option>
+                <option value="1">未剪辑</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+        <input type="text" name="name" id="name" placeholder="视频名" autocomplete="off" class="layui-input">
+        </div>
+         <div class="layui-input-inline">
+        <input type="text" name="videoid" id="videoid" placeholder="视频id" autocomplete="off" class="layui-input">
+        </div>
+        <button class="layui-btn" id="layuibtn" data-type="reload">搜索</button>
         <#--</form>-->
     </div>
     <table id="demo" lay-filter="ying"></table>
@@ -126,9 +132,9 @@
                 , {field: 'videoid', title: '视频ID', width: 120, sort: true}
                 , {field: 'createdate', title: '日期', width: 180, templet: '#createdate'}
                 , {field: 'isvideoaudio', title: '压制', width: 60,templet: '#isvideoaudioTpl' }
-                , {field: 'issubtitle', title: '字幕', width: 60,templet: '#isvideoaudioTpl' }
-                , {field: 'isclip', title: '剪辑', width: 60,templet: '#isvideoaudioTpl' }
-                , {field: 'issend', title: '发布', width: 60,templet: '#isvideoaudioTpl' }
+                , {field: 'issubtitle', title: '字幕', width: 60,templet: '#issubtitleTpl' }
+                , {field: 'isclip', title: '剪辑', width: 60,templet: '#isclipTpl' }
+                , {field: 'issend', title: '发布', width: 60,templet: '#issendTpl' }
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
 
             ]]
@@ -182,19 +188,28 @@
             }else if (layEvent === 'edit') {
                 x_admin_show('编辑', 'order-edit.html', 600, 600)
             }else if (layEvent === 'del') {
-                layer.confirm('真的删除行么00', function (index) {
+                layer.confirm('真的删除行么', function (index) {
                     console.log(data);
+                    var obj={"id": data.id};
                     $.ajax({
-                        url: "http://localhost:3058/web/uv/delete",
-                        type: "POST",
-                        data: {"id": data.id},
+                        url: "${request.contextPath}/youtube/update",
+                        type: "DELETE",
+                        data: JSON.stringify(obj),
                         dataType: "json",
+                        contentType : "application/json",
                         success: function (data) {
-                            console.log(data);
-                            if (data == 1) {
-                                obj.del();
-                                layer.close(index);
+                            if (data = 200) {
+                                /*layer.close(index);
                                 layer.msg("删除成功", {icon: 6});
+                                //关闭后的操作
+                                location.reload();
+                                var index = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(index);*/
+
+                                layer.msg('玩命卖萌中', function(){
+                                    layer.close(index);
+                                    layui.table.reload('youtubeTable',{page:{curr:1}});
+                                });
                             } else {
                                 layer.msg("删除失败", {icon: 5});
                             }
@@ -232,6 +247,20 @@
 </script>
 <script type="text/html" id="issubtitleTpl">
     {{# if(d.issubtitle == 0) { }}
+    <span class="layui-badge-dot layui-bg-green"></span>
+    {{# } else { }}
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    {{# } }}
+</script>
+<script type="text/html" id="isclipTpl">
+    {{# if(d.isclip == 0) { }}
+    <span class="layui-badge-dot layui-bg-green"></span>
+    {{# } else { }}
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    {{# } }}
+</script>
+<script type="text/html" id="issendTpl">
+    {{# if(d.issend == 0) { }}
     <span class="layui-badge-dot layui-bg-green"></span>
     {{# } else { }}
     <span class="layui-badge-dot layui-bg-orange"></span>

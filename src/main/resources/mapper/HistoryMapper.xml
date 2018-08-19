@@ -17,5 +17,7 @@
     <result column="bdbkKgId" property="bdbkkgid" jdbcType="VARCHAR" />
     <result column="bookName" property="bookname" jdbcType="VARCHAR" />
     <result column="articleName" property="articlename" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="issend" property="issend" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

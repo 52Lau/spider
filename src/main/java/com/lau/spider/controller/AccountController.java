@@ -2,8 +2,8 @@ package com.lau.spider.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.lau.spider.dto.LayuiDto;
-import com.lau.spider.model.Youtube;
-import com.lau.spider.service.YoutubeService;
+import com.lau.spider.model.Account;
+import com.lau.spider.service.AccountService;
 import com.lau.spider.util.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @program: MusicController
- * @description: 网易云音乐
+ * @description: 账号信息
  * @author: Lau52y
  * @create: 2018-08-12 21:41
  * <p>
@@ -20,52 +20,59 @@ import org.springframework.web.servlet.ModelAndView;
  **/
 @Slf4j
 @RestController
-@RequestMapping(value="youtube")
-public class YoutubeController {
+@RequestMapping(value="account")
+public class AccountController {
 
     @Autowired
-    YoutubeService youtubeService;
+    AccountService accountService;
 
     @RequestMapping(value = "list",produces = "application/json; charset=utf-8")
-    public String list(Youtube youtube, @RequestParam(required = false, defaultValue = "1") int page,
+    public String list(Account account, @RequestParam(required = false, defaultValue = "1") int page,
                        @RequestParam(required = false, defaultValue = "10") int limit){
-        LayuiDto layuiDto = youtubeService.findPage(youtube,page,limit);
+        LayuiDto layuiDto = accountService.findPage(account,page,limit);
         return JSON.toJSONString(layuiDto);
     }
 
     @GetMapping(value = "/get/{id}",produces = "application/json; charset=utf-8")
     public ModelAndView get(@PathVariable("id") int id){
-        ModelAndView result = new ModelAndView("youtube-edit2");
-        Youtube youtube = youtubeService.selectByKey(id);
-        result.addObject("youtube", youtube);
+        ModelAndView result = new ModelAndView("account-edit2");
+        Account account = accountService.selectByKey(id);
+        result.addObject("account", account);
         return result;
     }
     @GetMapping(value = "/getById/{id}",produces = "application/json; charset=utf-8")
     public String getById(@PathVariable("id") int id){
-        Youtube youtube = youtubeService.selectByKey(id);
-        return JSON.toJSONString(youtube);
+        Account account = accountService.selectByKey(id);
+        return JSON.toJSONString(account);
     }
 
-
+    /**
+     * 修改
+     * @param jsonStr
+     * @return
+     */
     @PutMapping(value ="/update")
     @ResponseBody
     public Integer update(@RequestBody String jsonStr) {
-        Youtube youtube = JSON.parseObject(jsonStr,Youtube.class);
-        int count=youtubeService.updateNotNull(youtube);
-        LayuiDto layuiDto=new LayuiDto();
+        Account account = JSON.parseObject(jsonStr,Account.class);
+        int count=accountService.updateNotNull(account);
         if (count>0){
             return Message.success;
         }
         return Message.fail;
     }
 
+    /**
+     * 禁用
+     * @param jsonStr
+     * @return
+     */
     @DeleteMapping(value ="/update")
     @ResponseBody
     public Integer delete(@RequestBody String jsonStr) {
-        Youtube youtube = JSON.parseObject(jsonStr,Youtube.class);
-        youtube.setStatus(1);
-        int count=youtubeService.updateNotNull(youtube);
-        LayuiDto layuiDto=new LayuiDto();
+        Account account = JSON.parseObject(jsonStr,Account.class);
+        account.setStatus(1);
+        int count=accountService.updateNotNull(account);
         if (count>0){
             return Message.success;
         }

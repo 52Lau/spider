@@ -52,7 +52,7 @@ public class YoutubeServiceImpl extends BaseService<Youtube> implements YoutubeS
             criteria.andLike("name","%"+youtube.getName()+"%");
         }
         if(StringUtils.isNotEmpty(youtube.getVideoid())){
-            criteria.andEqualTo("videoid",youtube.getVideoid());
+            criteria.andLike("videoid","%"+youtube.getVideoid()+"%");
         }
         criteria.andEqualTo("status",0);
 

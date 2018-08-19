@@ -50,6 +50,16 @@ public class Music {
     @Column(name = "songAuthor")
     private String songauthor;
 
+    private  Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     /**
      * 获取id
      *
