@@ -38,9 +38,9 @@ public class SpiderApplication extends WebMvcConfigurerAdapter implements Comman
     }
 
 
-   /* @RequestMapping("/")
-    String home() {
-        return "redirect:faqs2";
-    }*/
+    @RequestMapping("/")
+   public String home() {
+        return "redirect:index";
+    }
 }
 
