@@ -41,11 +41,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.cv4j.netdiscovery/netdiscovery-selenium -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.cv4j.netdiscovery</groupId>
             <artifactId>netdiscovery-selenium</artifactId>
             <version>0.1.5</version>
-        </dependency>
+        </dependency>-->
 
 
         <!--log4j-->
@@ -215,11 +215,11 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.javax.servlet.jsp.jstl</groupId>
             <artifactId>javax.servlet.jsp.jstl</artifactId>
             <version>1.1.custom</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
