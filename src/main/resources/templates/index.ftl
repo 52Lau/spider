@@ -142,12 +142,12 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="youtube-content-list.html">
+                        <a _href="content-list.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>YouTube</cite>
+                            <cite>content</cite>
                         </a>
                     </li>
-                    <li>
+                    <#--<li>
                         <a _href="music-content-list.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>Music</cite>
@@ -158,7 +158,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>History</cite>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
             <li>

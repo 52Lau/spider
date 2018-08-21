@@ -148,7 +148,7 @@
                     console.log(data);
                     var obj={"id": data.id};
                     $.ajax({
-                        url: "${request.contextPath}/youtube/update",
+                        url: "${request.contextPath}/wish/update",
                         type: "DELETE",
                         data: JSON.stringify(obj),
                         dataType: "json",

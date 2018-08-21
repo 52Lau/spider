@@ -27,46 +27,9 @@
     <form class="layui-form" id="form1" >
 
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">暱称</label>
-            <div class="layui-input-block">
-                <input type="text" name="name"  placeholder="暱称" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" name="email"  placeholder="邮箱" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">手机</label>
-            <div class="layui-input-block">
-                <input type="text" name="phone"  placeholder="手机" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">密码</label>
-            <div class="layui-input-block">
-                <input type="text" name="pwd"  placeholder="密码" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">平台</label>
-            <div class="layui-input-block">
-                <select name="platform" id="platform" style="height: 40px;">
-                    <option value="">选择平台</option>
-                    <option value="0">企鹅号</option>
-                    <option value="1">大鱼号</option>
-                    <option value="2">一点号</option>
-                    <option value="3">百家号</option>
-                    <option value="4">东方号</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">类型</label>
             <div class="layui-input-block">
-                <select name="type" id="type" style="height: 40px;">
+                <select name="typeid" id="typeid" style="height: 40px;">
                     <option value="">选择类型</option>
                     <option value="0">Music</option>
                     <option value="1">Youtube</option>
@@ -75,26 +38,51 @@
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">所属</label>
+            <label class="layui-form-label">内容</label>
             <div class="layui-input-block">
-                <input type="text"  name="owner" placeholder="所属" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">IdCard</label>
-            <div class="layui-input-block">
-                <input type="text"  name="idcard" placeholder="IdCard" autocomplete="off" class="layui-input">
+                <textarea class="layui-textarea" name="context" id="LAY_demo1" style="display: none">
+                    把编辑器的初始内容放在这textarea即可
+                </textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <input class="layui-btn" type="button" value="提交" onclick="login()">
+                <button class="layui-btn site-demo-layedit" data-type="content" onclick="login()">提交</button>
+                <#--<input class="layui-btn" type="button" value="提交" onclick="login()">-->
                 <input class="layui-btn"  type="reset" value="重置">
             </div>
         </div>
     </form>
 </div>
 
+
+<script>
+    layui.use('layedit', function(){
+        var layedit = layui.layedit
+                ,$ = layui.jquery;
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                //alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+</script>
 <script>
     layui.use(['form','layer'], function(){
         $ = layui.jquery;
@@ -126,7 +114,7 @@
             //几个参数需要注意一下
             type: "PUT",//方法类型
             dataType: "text",//预期服务器返回的数据类型
-            url: "${request.contextPath}/account/insert" ,//url
+            url: "${request.contextPath}/content/insert" ,//url
             data: JSON.stringify(v),
             contentType : "application/json",
             success: function (result) {

@@ -53,6 +53,7 @@ public class WishServiceImpl extends BaseService<Wish> implements WishService {
         }*/
         criteria.andEqualTo("status",0);
 
+        example.orderBy("createdate").desc();
         PageHelper.startPage(page,limit);
         List<Wish> list = wishMapper.selectByExample(example);
         LayuiDto layuiDto=new LayuiDto();

@@ -51,6 +51,7 @@ public class WishController {
     @ResponseBody
     public Integer update(@RequestBody String jsonStr) {
         Wish wish = JSON.parseObject(jsonStr,Wish.class);
+        wish.setIscomplete(0);
         int count=wishService.updateNotNull(wish);
         LayuiDto layuiDto=new LayuiDto();
         if (count>0){

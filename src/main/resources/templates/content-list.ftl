@@ -26,9 +26,9 @@
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">内容列表</a>
+        <a href="">演示</a>
         <a>
-          <cite>歷史内容列表</cite></a>
+          <cite>导航元素</cite></a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
        href="javascript:location.replace(location.href);" title="刷新">
@@ -38,41 +38,18 @@
     <div class="layui-row">
         <div class="layui-input-inline">
         <#--<form class="layui-form layui-col-md12 x-so" id="youtubeform">-->
-            <input class="layui-input" placeholder="创建时间" name="createdate" id="start">
+            <#--<input class="layui-input" placeholder="创建时间" name="createdate" id="start">-->
         </div>
         <div class="layui-input-inline">
-            <select name="catid" id="catid" style="height: 40px;">
+            <select name="typeid" id="typeid" style="height: 40px;">
                 <option value="">分类</option>
-                <option value="0">科技</option>
-                <option value="1">军事</option>
+                <option value="0">Music</option>
+                <option value="1">Youtube</option>
+                <option value="2">History</option>
             </select>
         </div>
         <div class="layui-input-inline">
-            <select name="isvideoaudio" id="isvideoaudio" style="height: 40px;">
-                <option value="">压制状态</option>
-                <option value="0">已压制</option>
-                <option value="1">未压制</option>
-            </select>
-        </div>
-        <div class="layui-input-inline">
-            <select name="issubtitle" id="issubtitle" style="height: 40px;">
-                <option value="">字幕状态</option>
-                <option value="0">已确认</option>
-                <option value="1">待确认</option>
-            </select>
-        </div>
-        <div class="layui-input-inline">
-            <select name="isclip" id="isclip" style="height: 40px;">
-                <option value="">剪辑状态</option>
-                <option value="0">已剪辑</option>
-                <option value="1">未剪辑</option>
-            </select>
-        </div>
-        <div class="layui-input-inline">
-        <input type="text" name="name" id="name" placeholder="视频名" autocomplete="off" class="layui-input">
-        </div>
-         <div class="layui-input-inline">
-        <input type="text" name="videoid" id="videoid" placeholder="视频id" autocomplete="off" class="layui-input">
+            <input type="text" name="context" id="context" placeholder="内容" autocomplete="off" class="layui-input">
         </div>
         <button class="layui-btn" id="layuibtn" data-type="reload">搜索</button>
         <#--</form>-->
@@ -95,25 +72,7 @@
     });
 
 </script>
-<#--<script>
-    function addOptions() {
 
-        $.ajax({
-            url: '<%=basePath%>department/findAllDepartment',
-            dataType: 'json',
-            type: 'post',
-            success: function (data) {
-
-                $.each(data, function (index, item) {
-                    $('#pname').append(new Option(item.name, item.id));// 下拉菜单里添加元素
-                })
-
-                form.render();//下拉菜单渲染 把内容加载进去
-
-            }
-        });
-    }
-</script>-->
 <script>
     layui.use('table', function () {
         var table = layui.table;
@@ -123,33 +82,22 @@
         table.render({
             elem: '#demo'
             , height: 500
-            , url: '/youtube/list/' //数据接口
+            , url: '/content/list/' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
                 {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'name', title: '名称', width: 640}
-                , {field: 'catid', title: '分类', width: 60}
-                , {field: 'videoid', title: '视频ID', width: 120, sort: true}
-                , {field: 'createdate', title: '日期', width: 180, templet: '#createdate'}
-                , {field: 'isvideoaudio', title: '压制', width: 60,templet: '#isvideoaudioTpl' }
-                , {field: 'issubtitle', title: '字幕', width: 60,templet: '#issubtitleTpl' }
-                , {field: 'isclip', title: '剪辑', width: 60,templet: '#isclipTpl' }
-                , {field: 'issend', title: '发布', width: 60,templet: '#issendTpl' }
+                , {field: 'typeid', title: '类型', width: 60,templet: '#typeTpl' }
+                , {field: 'context', title: '内容', width: 1400}
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
-
             ]]
             , id: 'youtubeTable'
         });
         /*reload 表格重载*/
         var $ = layui.$, active = {
             reload: function () {
-                var createDate = $('#start');
-                var catid = $('#catid');
-                var isvideoaudio = $('#isvideoaudio');
-                var issubtitle = $('#issubtitle');
-                var isclip = $('#isclip');
-                var name = $('#name');
-                var videoid = $('#videoid');
+                //var createDate = $('#start');
+                var typeid = $('#typeid');
+                var context = $('#context');
 
                 //执行重载
                 table.reload('youtubeTable', {
@@ -158,13 +106,9 @@
                     }
                     , where: {//参数
                         //key: {
-                        createDate : createDate.val(),
-                        catid : catid.val(),
-                        isvideoaudio : isvideoaudio.val(),
-                        issubtitle : issubtitle.val(),
-                        isclip : createDate.val(),
-                        name : createDate.val(),
-                        videoid : createDate.val()
+                        //createDate : createDate.val(),
+                        typeid : typeid.val(),
+                        context : context.val()
                         //}
                     }
                 });
@@ -183,16 +127,16 @@
             var data = obj.data,
                     layEvent = obj.event;
             if (layEvent === 'detail') {
-                //alert(data.id)
-                x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
-            }else if (layEvent === 'edit') {
+                alert(data.context)
+                //x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
+            }/*else if (layEvent === 'edit') {
                 x_admin_show('编辑', 'order-edit.html', 600, 600)
-            }else if (layEvent === 'del') {
+            }*/else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     console.log(data);
                     var obj={"id": data.id};
                     $.ajax({
-                        url: "${request.contextPath}/youtube/update",
+                        url: "${request.contextPath}/content/update",
                         type: "DELETE",
                         data: JSON.stringify(obj),
                         dataType: "json",
@@ -228,7 +172,7 @@
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <#--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 
     <!-- 这里同样支持 laytpl 语法，如： -->
@@ -245,25 +189,15 @@
     <span class="layui-badge-dot layui-bg-orange"></span>
     {{# } }}
 </script>
-<script type="text/html" id="issubtitleTpl">
-    {{# if(d.issubtitle == 0) { }}
-    <span class="layui-badge-dot layui-bg-green"></span>
+<script type="text/html" id="typeTpl">
+    {{# if(d.typeid ==0 ) { }}
+    <span class="layui-badge layui-bg-orange">Music</span>
+    {{# } else if(d.typeid ==1 ){ }}
+    <span class="layui-badge layui-bg-green">Youtube</span>
+    {{# } else if(d.typeid ==2 ){ }}
+    <span class="layui-badge layui-bg-green">History</span>
     {{# } else { }}
-    <span class="layui-badge-dot layui-bg-orange"></span>
-    {{# } }}
-</script>
-<script type="text/html" id="isclipTpl">
-    {{# if(d.isclip == 0) { }}
-    <span class="layui-badge-dot layui-bg-green"></span>
-    {{# } else { }}
-    <span class="layui-badge-dot layui-bg-orange"></span>
-    {{# } }}
-</script>
-<script type="text/html" id="issendTpl">
-    {{# if(d.issend == 0) { }}
-    <span class="layui-badge-dot layui-bg-green"></span>
-    {{# } else { }}
-    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge layui-bg-blue">未知</span>
     {{# } }}
 </script>
 <!--时间格式化-->

@@ -2,48 +2,50 @@ package com.lau.spider.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.lau.spider.dto.LayuiDto;
-import com.lau.spider.model.Account;
-import com.lau.spider.service.AccountService;
+import com.lau.spider.model.Content;
+import com.lau.spider.service.ContentService;
 import com.lau.spider.util.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 /**
- * @program: MusicController
- * @description: 账号信息
+ * @program: ContentController
+ * @description: 内容管理
  * @author: Lau52y
- * @create: 2018-08-12 21:41
+ * @create: 2018-08-21 22:03
  * <p>
  * <人生可否变作漫长浪漫程序！>
  **/
 @Slf4j
 @RestController
-@RequestMapping(value="account")
-public class AccountController {
+@RequestMapping(value="content")
+public class ContentController {
 
     @Autowired
-    AccountService accountService;
+    ContentService contentService;
 
     @RequestMapping(value = "list",produces = "application/json; charset=utf-8")
-    public String list(Account account, @RequestParam(required = false, defaultValue = "1") int page,
+    public String list(Content content, @RequestParam(required = false, defaultValue = "1") int page,
                        @RequestParam(required = false, defaultValue = "10") int limit){
-        LayuiDto layuiDto = accountService.findPage(account,page,limit);
+        LayuiDto layuiDto = contentService.findPage(content,page,limit);
         return JSON.toJSONString(layuiDto);
     }
 
     @GetMapping(value = "/get/{id}",produces = "application/json; charset=utf-8")
     public ModelAndView get(@PathVariable("id") int id){
-        ModelAndView result = new ModelAndView("account-edit2");
-        Account account = accountService.selectByKey(id);
-        result.addObject("account", account);
+        ModelAndView result = new ModelAndView("content-edit2");
+        Content content = contentService.selectByKey(id);
+        result.addObject("content", content);
         return result;
     }
     @GetMapping(value = "/getById/{id}",produces = "application/json; charset=utf-8")
     public String getById(@PathVariable("id") int id){
-        Account account = accountService.selectByKey(id);
-        return JSON.toJSONString(account);
+        Content content = contentService.selectByKey(id);
+        return JSON.toJSONString(content);
     }
 
     /**
@@ -54,8 +56,8 @@ public class AccountController {
     @PutMapping(value ="/update")
     @ResponseBody
     public Integer update(@RequestBody String jsonStr) {
-        Account account = JSON.parseObject(jsonStr,Account.class);
-        int count=accountService.updateNotNull(account);
+        Content content = JSON.parseObject(jsonStr,Content.class);
+        int count=contentService.updateNotNull(content);
         if (count>0){
             return Message.success;
         }
@@ -70,9 +72,9 @@ public class AccountController {
     @DeleteMapping(value ="/update")
     @ResponseBody
     public Integer delete(@RequestBody String jsonStr) {
-        Account account = JSON.parseObject(jsonStr,Account.class);
-        account.setStatus(1);
-        int count=accountService.updateNotNull(account);
+        Content content = JSON.parseObject(jsonStr,Content.class);
+        content.setStatus(1);
+        int count=contentService.updateNotNull(content);
         if (count>0){
             return Message.success;
         }
@@ -83,16 +85,15 @@ public class AccountController {
     @PutMapping(value ="/insert")
     @ResponseBody
     public Integer insert(@RequestBody String jsonStr) {
-        Account account = JSON.parseObject(jsonStr,Account.class);
-        account.setStatus(0);
-        int count=accountService.save(account);
+        Content content = JSON.parseObject(jsonStr,Content.class);
+        content.setStatus(0);
+        content.setCreatedate(new Date());
+        int count=contentService.save(content);
         LayuiDto layuiDto=new LayuiDto();
         if (count>0){
             return Message.success;
         }
         return Message.fail;
     }
-
-
 
 }

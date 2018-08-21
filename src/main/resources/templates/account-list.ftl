@@ -35,7 +35,7 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
+    <#--<div class="layui-row">
         <div class="layui-input-inline">
             <input class="layui-input" placeholder="创建时间" name="createdate" id="start">
         </div>
@@ -74,8 +74,8 @@
         <input type="text" name="videoid" id="videoid" placeholder="视频id" autocomplete="off" class="layui-input">
         </div>
         <button class="layui-btn" id="layuibtn" data-type="reload">搜索</button>
-        <#--</form>-->
-    </div>
+        &lt;#&ndash;</form>&ndash;&gt;
+    </div>-->
     <xblock>
         <button class="layui-btn" onclick="x_admin_show('添加用户','./account-add.html',600,400)"><i class="layui-icon"></i>添加</button>
     </xblock>
@@ -113,6 +113,7 @@
                 , {field: 'name', title: '昵称', width: 100}
                 , {field: 'email', title: '邮箱', width: 100}
                 , {field: 'phone', title: '手机', width: 100, sort: true}
+                , {field: 'pwd', title: '密码', width: 100, templet: '#pwd'}
                 , {field: 'platform', title: '平台', width: 100, templet: '#platformTpl'}
                 , {field: 'type', title: '类型', width: 100,templet: '#typeTpl' }
                 , {field: 'owner', title: '所属', width: 100,templet: '#ownerTpl' }
@@ -164,16 +165,16 @@
             var data = obj.data,
                     layEvent = obj.event;
             if (layEvent === 'detail') {
-                //alert(data.id)
-                x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
+                alert("pwd:"+data.pwd)
             }else if (layEvent === 'edit') {
-                x_admin_show('编辑', 'order-edit.html', 600, 600)
+                alert("待续")
+               /* x_admin_show('编辑', 'order-edit.html', 600, 600)*/
             }else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     console.log(data);
                     var obj={"id": data.id};
                     $.ajax({
-                        url: "${request.contextPath}/youtube/update",
+                        url: "${request.contextPath}/account/update",
                         type: "DELETE",
                         data: JSON.stringify(obj),
                         dataType: "json",
@@ -219,23 +220,37 @@
 
 
 </script>
+<script type="text/html" id="pwd">
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge-dot layui-bg-orange"></span>
+    <span class="layui-badge-dot layui-bg-orange"></span>
+</script>
 <script type="text/html" id="platformTpl">
-    {{# if(d.platform ==1 ) { }}
-    <span class="layui-badge layui-bg-orange">平台1</span>
+    {{# if(d.platform ==0 ) { }}
+    <span class="layui-badge layui-bg-orange">企鹅号</span>
+    {{# } else if(d.platform ==1 ){ }}
+    <span class="layui-badge layui-bg-green">大鱼号</span>
     {{# } else if(d.platform ==2 ){ }}
-    <span class="layui-badge layui-bg-green">平台2</span>
+    <span class="layui-badge layui-bg-green">一点号</span>
+    {{# } else if(d.platform ==3 ){ }}
+    <span class="layui-badge layui-bg-green">百家号</span>
     {{# } else { }}
-    <span class="layui-badge layui-bg-blue">平台3</span>
+    <span class="layui-badge layui-bg-blue">东方号</span>
     {{# } }}
 </script>
 
 <script type="text/html" id="typeTpl">
-    {{# if(d.type ==1 ) { }}
-    <span class="layui-badge layui-bg-orange">平台1</span>
+    {{# if(d.type ==0 ) { }}
+    <span class="layui-badge layui-bg-orange">Music</span>
+    {{# } else if(d.type ==1 ){ }}
+    <span class="layui-badge layui-bg-green">Youtube</span>
     {{# } else if(d.type ==2 ){ }}
-    <span class="layui-badge layui-bg-green">平台2</span>
+    <span class="layui-badge layui-bg-green">History</span>
     {{# } else { }}
-    <span class="layui-badge layui-bg-blue">平台3</span>
+    <span class="layui-badge layui-bg-blue">未知</span>
     {{# } }}
 </script>
 <!--时间格式化-->

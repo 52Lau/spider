@@ -24,19 +24,16 @@ import java.util.List;
 @Service
 public class ContentServiceImpl extends BaseService<Content> implements ContentService {
 
-   /* @Autowired
-    ContentMapper ContentMapper;
-    @Override
-    public int insertContent(Content Content) {
-        return ContentMapper.insertContent(Content);
-    }
+   @Autowired
+    ContentMapper contentMapper;
+
 
     @Override
-    public LayuiDto findPage(Content Content, int page, int limit) {
+    public LayuiDto findPage(Content content, int page, int limit) {
         Example example = new Example(Content.class);
         Example.Criteria criteria = example.createCriteria();
 
-        if(Content.getCreatedate()!=null){
+        /*if(Content.getCreatedate()!=null){
             criteria.andEqualTo("createdate",Content.getCreatedate());
         }
         if(Content.getCatid()!=null){
@@ -53,15 +50,26 @@ public class ContentServiceImpl extends BaseService<Content> implements ContentS
         }
         if(StringUtils.isNotEmpty(Content.getVideoid())){
             criteria.andEqualTo("videoid",Content.getVideoid());
+        }*/
+
+        if(content.getTypeid()!=null){
+            criteria.andEqualTo("typeid",content.getTypeid());
         }
+        if (StringUtils.isNotEmpty(content.getContext())){
+            criteria.andLike("context","%"+content.getContext()+"%");
+        }
+
         criteria.andEqualTo("status",0);
 
+
+        example.orderBy("createdate").desc();
+
         PageHelper.startPage(page,limit);
-        List<Content> list = ContentMapper.selectByExample(example);
+        List<Content> list = contentMapper.selectByExample(example);
         LayuiDto layuiDto=new LayuiDto();
         PageInfo pageInfo=new PageInfo<>(list);
         layuiDto.setCount((int)pageInfo.getTotal());
         layuiDto.setData(list.toArray());
         return layuiDto;
-    }*/
+    }
 }
