@@ -77,7 +77,7 @@
         <#--</form>-->
     </div>
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./member-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','./account-add.html',600,400)"><i class="layui-icon"></i>添加</button>
     </xblock>
     <table id="demo" lay-filter="ying"></table>
 </div>

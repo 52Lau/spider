@@ -80,6 +80,18 @@ public class AccountController {
     }
 
 
+    @PutMapping(value ="/insert")
+    @ResponseBody
+    public Integer insert(@RequestBody String jsonStr) {
+        Wish wish = JSON.parseObject(jsonStr,Wish.class);
+        int count=wishService.insert(wish);
+        LayuiDto layuiDto=new LayuiDto();
+        if (count>0){
+            return Message.success;
+        }
+        return Message.fail;
+    }
+
 
 
 }

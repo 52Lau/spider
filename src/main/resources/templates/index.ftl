@@ -134,7 +134,7 @@
                     </li>
                 </ul>
             </li>
-            <#--<li>
+            <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>内容管理</cite>
@@ -160,7 +160,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>-->
+            </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
@@ -186,7 +186,7 @@
                     <li>
                         <a _href="account-list.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>YouTube</cite>
+                            <cite>Account</cite>
                         </a>
                     </li>
                 </ul>
