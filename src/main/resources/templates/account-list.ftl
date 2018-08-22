@@ -237,8 +237,22 @@
     <span class="layui-badge layui-bg-green">一点号</span>
     {{# } else if(d.platform ==3 ){ }}
     <span class="layui-badge layui-bg-green">百家号</span>
+    {{# } else if(d.platform ==4 ){ }}
+    <span class="layui-badge layui-bg-green">东方号</span>
+    {{# } else if(d.platform ==5 ){ }}
+    <span class="layui-badge layui-bg-green">网易号</span>
+    {{# } else if(d.platform ==6 ){ }}
+    <span class="layui-badge layui-bg-green">大风号</span>
+    {{# } else if(d.platform ==7 ){ }}
+    <span class="layui-badge layui-bg-green">头条号</span>
+    {{# } else if(d.platform ==8 ){ }}
+    <span class="layui-badge layui-bg-green">凤凰号</span>
+    {{# } else if(d.platform ==9 ){ }}
+    <span class="layui-badge layui-bg-green">搜狐号</span>
+    {{# } else if(d.platform ==10 ){ }}
+    <span class="layui-badge layui-bg-green">趣头条</span>
     {{# } else { }}
-    <span class="layui-badge layui-bg-blue">东方号</span>
+    <span class="layui-badge layui-bg-blue">未知</span>
     {{# } }}
 </script>
 

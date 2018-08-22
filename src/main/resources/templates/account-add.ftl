@@ -60,6 +60,12 @@
                     <option value="2">一点号</option>
                     <option value="3">百家号</option>
                     <option value="4">东方号</option>
+                    <option value="5">网易号</option>
+                    <option value="6">大风号</option>
+                    <option value="7">头条号</option>
+                    <option value="8">凤凰号</option>
+                    <option value="9">搜狐号</option>
+                    <option value="10">趣头条</option>
                 </select>
             </div>
         </div>
