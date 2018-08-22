@@ -43,15 +43,15 @@
         <div class="layui-input-inline">
             <select name="level1" id="level1" style="height: 40px;">
                 <option value="">一级词义</option>
-                <option value="语言文化">语言文化</option>
-                <option value="地理">地理</option>
+                <#--<option value="语言文化">语言文化</option>
+                <option value="地理">地理</option>-->
             </select>
         </div>
         <div class="layui-input-inline">
             <select name="level2" id="level2" style="height: 40px;">
                 <option value="">二级词义</option>
-                <option value="语言文化">语言文化</option>
-                <option value="文化人物">文化人物</option>
+                <#--<option value="语言文化">语言文化</option>
+                <option value="文化人物">文化人物</option>-->
             </select>
         </div>
         <div class="layui-input-inline">
@@ -244,7 +244,39 @@
     return date.Format("yyyy-MM-dd hh:mm:ss");
     }}
 </script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/history/level1List",
+            success: function (data) {
+                //for (var i = 0; i < data.length; i++) {
+                for (var i in data) {
+                    $("#level1").append("<option value= '"+data[i].level1 +"'>"+data[i].level1+"</option>");
+                }
 
+                //alert(data.catname)
+
+                //}
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/history/level1List",
+            success: function (data) {
+                //for (var i = 0; i < data.length; i++) {
+                for (var i in data) {
+                    $("#level2").append("<option value= '"+data[i].level1 +"'>"+data[i].level1+"</option>");
+                }
+
+                //alert(data.catname)
+
+                //}
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

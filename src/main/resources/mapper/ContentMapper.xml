@@ -11,5 +11,6 @@
     <result column="context" property="context" jdbcType="VARCHAR" />
     <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="issend" property="issend" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

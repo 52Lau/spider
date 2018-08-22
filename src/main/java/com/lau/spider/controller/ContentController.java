@@ -37,7 +37,7 @@ public class ContentController {
 
     @GetMapping(value = "/get/{id}",produces = "application/json; charset=utf-8")
     public ModelAndView get(@PathVariable("id") int id){
-        ModelAndView result = new ModelAndView("content-edit2");
+        ModelAndView result = new ModelAndView("content-edit");
         Content content = contentService.selectByKey(id);
         result.addObject("content", content);
         return result;

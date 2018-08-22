@@ -37,6 +37,16 @@ public class Content {
      */
     private Integer status;
 
+    private  Integer issend;
+
+    public Integer getIssend() {
+        return issend;
+    }
+
+    public void setIssend(Integer issend) {
+        this.issend = issend;
+    }
+
     /**
      * 获取id
      *

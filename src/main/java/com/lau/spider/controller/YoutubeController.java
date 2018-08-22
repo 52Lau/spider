@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 /**
  * @program: MusicController
  * @description: 网易云音乐
@@ -51,6 +53,7 @@ public class YoutubeController {
     @ResponseBody
     public Integer update(@RequestBody String jsonStr) {
         Youtube youtube = JSON.parseObject(jsonStr,Youtube.class);
+        youtube.setCreatedate(new Date());
         int count=youtubeService.updateNotNull(youtube);
         LayuiDto layuiDto=new LayuiDto();
         if (count>0){

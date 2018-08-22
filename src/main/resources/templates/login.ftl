@@ -1,69 +1,41 @@
-<!doctype html>
-<html lang="en">
+<#compress >
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-	<meta charset="UTF-8">
-	<title>后台登录-X-admin2.0</title>
-	<meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./static/css/font.css">
-	<link rel="stylesheet" href="./static/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./static/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./static/js/xadmin.js"></script>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>登录</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/plugins/animate/animate.min.css">
+    <link rel="stylesheet" href="/static/plugins/toast/css/jquery.toast.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body{background-color:#f5f5f5}*{outline:0}label{color:#4b1c0f}.login-form{max-width:380px;margin-top:10%}.login-logo{font-size:56px;text-align:center;margin-bottom:25px;font-weight:500;color:#444;text-shadow:#b2baba .1em .1em .2em}.login-body{padding:20px;background-color:#fff;-o-box-shadow:-4px 7px 46px 2px rgba(0,0,0,.1);box-shadow:-4px 7px 46px 2px rgba(0,0,0,.1)}.login-button{background-color:#fff;border-radius:0;border:1px solid #000;transition:all .5s ease-in-out}.login-button:hover{border:1px solid #fff;background-color:#000;color:#fff}.form-group{padding-bottom:25px}#login-name,#login-pwd{border-radius:0}.control{padding-bottom:5px}
+    </style>
 </head>
-<body class="login-bg">
-    
-    <div class="login layui-anim layui-anim-up">
-        <div class="message">x-admin2.0-管理登录</div>
-        <div id="darkbannerwrap"></div>
-        
-        <form method="post" class="layui-form" >
-            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
-            <hr class="hr15">
-            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
-            <hr class="hr15">
-            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
-            <hr class="hr20" >
+<body>
+<div class="container login-form">
+    <div class="login-logo animated fadeInUp">
+        Halo
+    </div>
+    <div class="login-body animated">
+        <form>
+            <div class="form-group animated fadeInUp" style="animation-delay: 0.1s">
+                <input type="text" class="form-control" name="loginEmail" id="login-name" placeholder="用户名/邮箱">
+            </div>
+            <div class="form-group animated fadeInUp" style="animation-delay: 0.2s">
+                <input type="password" class="form-control" name="loginPwd" id="login-pwd" placeholder="密码">
+            </div>
+            <button type="button" id="btn-login" data-loading-text="登录中..." class="btn btn-block login-button animated fadeInUp" onclick="btn_login()"  style="animation-delay: 0.4s;outline: none;">登录</button>
         </form>
     </div>
-
-    <script>
-        $(function  () {
-            layui.use('form', function(){
-              var form = layui.form;
-              // layer.msg('玩命卖萌中', function(){
-              //   //关闭后的操作
-              //   });
-              //监听提交
-              form.on('submit(login)', function(data){
-                // alert(888)
-                layer.msg(JSON.stringify(data.field),function(){
-                    location.href='index.html'
-                });
-                return false;
-              });
-            });
-        })
-
-        
-    </script>
-
-    
-    <!-- 底部结束 -->
-    <script>
-    //百度统计可去掉
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
+</div>
 </body>
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/plugins/toast/js/jquery.toast.min.js"></script>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/login.js"></script>
 </html>
+</#compress>

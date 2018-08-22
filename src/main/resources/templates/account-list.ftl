@@ -112,7 +112,7 @@
                 {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'name', title: '昵称', width: 100}
                 , {field: 'email', title: '邮箱', width: 100}
-                , {field: 'phone', title: '手机', width: 100, sort: true}
+                /*, {field: 'phone', title: '手机', width: 100, sort: true}*/
                 , {field: 'pwd', title: '密码', width: 100, templet: '#pwd'}
                 , {field: 'platform', title: '平台', width: 100, templet: '#platformTpl'}
                 , {field: 'type', title: '类型', width: 100,templet: '#typeTpl' }

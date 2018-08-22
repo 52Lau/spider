@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * @program: MusicController
  * @description: 历史
@@ -80,6 +82,17 @@ public class HistoryController {
         return Message.fail;
     }
 
+    @GetMapping(value = "/level1List",produces = "application/json; charset=utf-8")
+    public String level1List(){
+        List<History> level1List = historyService.level1List();
+        return JSON.toJSONString(level1List.toArray());
+    }
+
+    @GetMapping(value = "/level2List",produces = "application/json; charset=utf-8")
+    public String level2List(){
+        List<History> level2List = historyService.level2List();
+        return JSON.toJSONString(level2List.toArray());
+    }
 
 
 

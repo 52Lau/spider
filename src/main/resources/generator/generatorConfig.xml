@@ -32,7 +32,7 @@
         <javaClientGenerator targetPackage="com.lau.spider.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="history" delimitAllColumns="true">
+        <table tableName="category" delimitAllColumns="true">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->

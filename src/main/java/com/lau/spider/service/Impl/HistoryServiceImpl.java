@@ -25,7 +25,7 @@ import java.util.List;
 public class HistoryServiceImpl extends BaseService<History> implements HistoryService {
 
     @Autowired
-    HistoryMapper HistoryMapper;
+    HistoryMapper historyMapper;
 
 
     @Override
@@ -52,11 +52,21 @@ public class HistoryServiceImpl extends BaseService<History> implements HistoryS
         criteria.andEqualTo("status",0);
 
         PageHelper.startPage(page,limit);
-        List<History> list = HistoryMapper.selectByExample(example);
+        List<History> list = historyMapper.selectByExample(example);
         LayuiDto layuiDto=new LayuiDto();
         PageInfo pageInfo=new PageInfo<>(list);
         layuiDto.setCount((int)pageInfo.getTotal());
         layuiDto.setData(list.toArray());
         return layuiDto;
+    }
+
+    @Override
+    public List<History> level1List() {
+        return historyMapper.level1List();
+    }
+
+    @Override
+    public List<History> level2List() {
+        return historyMapper.level2List();
     }
 }

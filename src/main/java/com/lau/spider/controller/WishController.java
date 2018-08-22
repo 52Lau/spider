@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 /**
  * @program: WishController
  * @description: 需求管理
@@ -51,6 +53,7 @@ public class WishController {
     @ResponseBody
     public Integer update(@RequestBody String jsonStr) {
         Wish wish = JSON.parseObject(jsonStr,Wish.class);
+        //wish.setCreatedate(new Date());
         wish.setIscomplete(0);
         int count=wishService.updateNotNull(wish);
         LayuiDto layuiDto=new LayuiDto();

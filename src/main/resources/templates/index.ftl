@@ -147,18 +147,7 @@
                             <cite>content</cite>
                         </a>
                     </li>
-                    <#--<li>
-                        <a _href="music-content-list.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>Music</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="history-content-list.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>History</cite>
-                        </a>
-                    </li>-->
+
                 </ul>
             </li>
             <li>

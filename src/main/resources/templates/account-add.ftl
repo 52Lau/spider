@@ -38,12 +38,12 @@
                 <input type="text" name="email"  placeholder="邮箱" autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
+        <#--<div class="layui-form-item layui-form-text">
             <label class="layui-form-label">手机</label>
             <div class="layui-input-block">
                 <input type="text" name="phone"  placeholder="手机" autocomplete="off" class="layui-input">
             </div>
-        </div>
+        </div>-->
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-block">

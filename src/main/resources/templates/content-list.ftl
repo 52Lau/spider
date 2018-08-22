@@ -19,6 +19,7 @@
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
     <![endif]-->
 </head>
 
@@ -38,40 +39,34 @@
     <div class="layui-row">
         <div class="layui-input-inline">
         <#--<form class="layui-form layui-col-md12 x-so" id="youtubeform">-->
-            <#--<input class="layui-input" placeholder="创建时间" name="createdate" id="start">-->
+        <#--<input class="layui-input" placeholder="创建时间" name="createdate" id="start">-->
         </div>
         <div class="layui-input-inline">
             <select name="typeid" id="typeid" style="height: 40px;">
                 <option value="">分类</option>
-                <option value="0">Music</option>
+                <#--<option value="0">Music</option>
                 <option value="1">Youtube</option>
-                <option value="2">History</option>
+                <option value="2">History</option>-->
             </select>
+
+
         </div>
+
+
         <div class="layui-input-inline">
             <input type="text" name="context" id="context" placeholder="内容" autocomplete="off" class="layui-input">
         </div>
         <button class="layui-btn" id="layuibtn" data-type="reload">搜索</button>
-        <#--</form>-->
+    <#--</form>-->
     </div>
+    <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','./content-add.html',600,400)"><i
+                class="layui-icon"></i>添加
+        </button>
+    </xblock>
     <table id="demo" lay-filter="ying"></table>
 </div>
-<script>
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
 
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-    });
-
-</script>
 
 <script>
     layui.use('table', function () {
@@ -86,8 +81,9 @@
             , page: true //开启分页
             , cols: [[ //表头
                 {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'typeid', title: '类型', width: 60,templet: '#typeTpl' }
+                , {field: 'typeid', title: '类型', width: 60, templet: '#typeTpl'}
                 , {field: 'context', title: '内容', width: 1400}
+                , {field: 'issend', title: '发布', width: 60, templet: '#issendTpl'}
                 , {fixed: 'right', title: '操作', width: 150, align: 'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             , id: 'youtubeTable'
@@ -107,8 +103,8 @@
                     , where: {//参数
                         //key: {
                         //createDate : createDate.val(),
-                        typeid : typeid.val(),
-                        context : context.val()
+                        typeid: typeid.val(),
+                        context: context.val()
                         //}
                     }
                 });
@@ -129,18 +125,18 @@
             if (layEvent === 'detail') {
                 alert(data.context)
                 //x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
-            }/*else if (layEvent === 'edit') {
-                x_admin_show('编辑', 'order-edit.html', 600, 600)
-            }*/else if (layEvent === 'del') {
+            } else if (layEvent === 'edit') {
+                x_admin_show('编辑', '/content/get/' + data.id, 600, 600)
+            } else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     console.log(data);
-                    var obj={"id": data.id};
+                    var obj = {"id": data.id};
                     $.ajax({
                         url: "${request.contextPath}/content/update",
                         type: "DELETE",
                         data: JSON.stringify(obj),
                         dataType: "json",
-                        contentType : "application/json",
+                        contentType: "application/json",
                         success: function (data) {
                             if (data = 200) {
                                 /*layer.close(index);
@@ -150,9 +146,9 @@
                                 var index = parent.layer.getFrameIndex(window.name);
                                 parent.layer.close(index);*/
 
-                                layer.msg('玩命卖萌中', function(){
+                                layer.msg('玩命卖萌中', function () {
                                     layer.close(index);
-                                    layui.table.reload('youtubeTable',{page:{curr:1}});
+                                    layui.table.reload('youtubeTable', {page: {curr: 1}});
                                 });
                             } else {
                                 layer.msg("删除失败", {icon: 5});
@@ -196,8 +192,17 @@
     <span class="layui-badge layui-bg-green">Youtube</span>
     {{# } else if(d.typeid ==2 ){ }}
     <span class="layui-badge layui-bg-green">History</span>
+    {{# } else if(d.typeid ==3 ){ }}
+    <span class="layui-badge layui-bg-green">News</span>
     {{# } else { }}
     <span class="layui-badge layui-bg-blue">未知</span>
+    {{# } }}
+</script>
+<script type="text/html" id="issendTpl">
+    {{# if(d.issend == 0) { }}
+    <span class="layui-badge-dot layui-bg-green"></span>
+    {{# } else { }}
+    <span class="layui-badge-dot layui-bg-orange"></span>
     {{# } }}
 </script>
 <!--时间格式化-->
@@ -210,6 +215,24 @@
     }}
 </script>
 
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/category/get/2",
+            success: function (data) {
+                //for (var i = 0; i < data.length; i++) {
+                    for (var i in data) {
+                        $("#typeid").append("<option value= '"+data[i].id +"'>"+data[i].catname+"</option>");
+                    }
+
+                    //alert(data.catname)
+
+                //}
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

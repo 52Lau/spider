@@ -4,20 +4,54 @@ import javax.persistence.*;
 
 public class Category {
     /**
-     * 分类id
+     * id
      */
     @Id
+    @Column(name = "`id`")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    /**
+     * 分类id
+     */
+    @Column(name = "`catid`")
     private Integer catid;
 
     /**
      * 分类名称
      */
+    @Column(name = "`catname`")
     private String catname;
 
     /**
-     * 类型
+     * 类型1平台 2内容
      */
+    @Column(name = "`type`")
     private Integer type;
+
+    /**
+     * 状态
+     */
+    @Column(name = "`status`")
+    private Integer status;
+
+    /**
+     * 获取id
+     *
+     * @return id - id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * 设置id
+     *
+     * @param id id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     /**
      * 获取分类id
@@ -56,20 +90,38 @@ public class Category {
     }
 
     /**
-     * 获取类型
+     * 获取类型1平台 2内容
      *
-     * @return type - 类型
+     * @return type - 类型1平台 2内容
      */
     public Integer getType() {
         return type;
     }
 
     /**
-     * 设置类型
+     * 设置类型1平台 2内容
      *
-     * @param type 类型
+     * @param type 类型1平台 2内容
      */
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    /**
+     * 获取状态
+     *
+     * @return status - 状态
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * 设置状态
+     *
+     * @param status 状态
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

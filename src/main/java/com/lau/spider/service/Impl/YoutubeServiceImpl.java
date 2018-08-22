@@ -56,6 +56,7 @@ public class YoutubeServiceImpl extends BaseService<Youtube> implements YoutubeS
         }
         criteria.andEqualTo("status",0);
 
+        example.orderBy("createdate").desc();
         PageHelper.startPage(page,limit);
         List<Youtube> list = youtubeMapper.selectByExample(example);
         LayuiDto layuiDto=new LayuiDto();
