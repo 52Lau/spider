@@ -1,7 +1,7 @@
 package com.lau.spider.model.dto;
 
 
-import com.sun.xml.internal.ws.api.message.Attachment;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,10 +23,6 @@ public class HaloConst {
      */
     public static Map<String, String> OPTIONS = new HashMap<>();
 
-    /**
-     * 所有文件
-     */
-    public static List<Attachment> ATTACHMENTS = new ArrayList<>();
 
     /**
      * 所有主题

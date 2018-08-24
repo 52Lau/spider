@@ -40,7 +40,7 @@
             <label class="layui-form-label">需求</label>
             <div class="layui-input-block">
                 <div id="editor">
-                    <p>人生可否变作漫长浪漫程序！3333</p>
+                    <p>人生可否变作漫长浪漫程序！</p>
                 </div>
             </div>
         </div>
@@ -127,7 +127,6 @@
                     location.reload();
                     var index = parent.layer.getFrameIndex(window.name);
                     parent.layer.close(index);*/
-
                     layer.msg('玩命卖萌中', function(){
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
