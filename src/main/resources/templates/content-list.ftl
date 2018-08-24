@@ -20,6 +20,7 @@
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/js-xss/0.3.3/xss.js"></script>
     <![endif]-->
 </head>
 
@@ -48,11 +49,7 @@
                 <option value="1">Youtube</option>
                 <option value="2">History</option>-->
             </select>
-
-
         </div>
-
-
         <div class="layui-input-inline">
             <input type="text" name="context" id="context" placeholder="内容" autocomplete="off" class="layui-input">
         </div>
@@ -60,7 +57,7 @@
     <#--</form>-->
     </div>
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./content-add.html',600,400)"><i
+        <button class="layui-btn" onclick="x_admin_show('添加内容','content/drop/wish-add2',1200,800)"><i
                 class="layui-icon"></i>添加
         </button>
     </xblock>
@@ -123,10 +120,10 @@
             var data = obj.data,
                     layEvent = obj.event;
             if (layEvent === 'detail') {
-                alert(data.context)
+                x_admin_show('查看', '/content/get/'+data.id, 1200, 800)
                 //x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
             } else if (layEvent === 'edit') {
-                x_admin_show('编辑', '/content/get/' + data.id, 600, 600)
+                x_admin_show('编辑', '/content/get/' + data.id, 1200, 800)
             } else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     console.log(data);

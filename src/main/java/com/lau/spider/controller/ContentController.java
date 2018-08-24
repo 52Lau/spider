@@ -2,7 +2,10 @@ package com.lau.spider.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.lau.spider.dto.LayuiDto;
+import com.lau.spider.model.Category;
 import com.lau.spider.model.Content;
+import com.lau.spider.model.User;
+import com.lau.spider.service.CategoryService;
 import com.lau.spider.service.ContentService;
 import com.lau.spider.util.Message;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @program: ContentController
@@ -28,6 +33,9 @@ public class ContentController {
     @Autowired
     ContentService contentService;
 
+    @Autowired
+    CategoryService categoryService;
+
     @RequestMapping(value = "list",produces = "application/json; charset=utf-8")
     public String list(Content content, @RequestParam(required = false, defaultValue = "1") int page,
                        @RequestParam(required = false, defaultValue = "10") int limit){
@@ -35,11 +43,18 @@ public class ContentController {
         return JSON.toJSONString(layuiDto);
     }
 
+
     @GetMapping(value = "/get/{id}",produces = "application/json; charset=utf-8")
     public ModelAndView get(@PathVariable("id") int id){
-        ModelAndView result = new ModelAndView("content-edit");
+        ModelAndView result = new ModelAndView("wish-add3");
         Content content = contentService.selectByKey(id);
+
+        //动态select 回显
+        Category category=new Category();
+        category.setType(2);
+        List<Category> categoryList = categoryService.typeList(category);
         result.addObject("content", content);
+        result.addObject("categorys",categoryList);
         return result;
     }
     @GetMapping(value = "/getById/{id}",produces = "application/json; charset=utf-8")
@@ -94,6 +109,27 @@ public class ContentController {
             return Message.success;
         }
         return Message.fail;
+    }
+
+
+    /**
+     * @param page
+     * @return
+     */
+    @RequestMapping("/drop/{page}")
+    public ModelAndView path(@PathVariable("page") String page, HttpSession session) {
+        ModelAndView result = new ModelAndView("wish-add2");
+        User user = (User) session.getAttribute("user_session");
+        if (null != user) {
+            //动态select 回显
+            Category category=new Category();
+            category.setType(2);
+            List<Category> categoryList = categoryService.typeList(category);
+            result.addObject("categorys",categoryList);
+            return result;
+        }
+
+        return new ModelAndView("login");
     }
 
 }

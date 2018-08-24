@@ -144,7 +144,13 @@
                     <li>
                         <a _href="content-list.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>content</cite>
+                            <cite>Content</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="content/drop/wish-add2">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>C-insert</cite>
                         </a>
                     </li>
 
