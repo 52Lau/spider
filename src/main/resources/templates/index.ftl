@@ -9,7 +9,7 @@
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="${request.contextPath}/static/js/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./static/css/font.css">
     <link rel="stylesheet" href="./static/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -147,12 +147,12 @@
                             <cite>Content</cite>
                         </a>
                     </li>
-                    <li>
+                    <#--<li>
                         <a _href="content/drop/wish-add2">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>C-insert</cite>
                         </a>
-                    </li>
+                    </li>-->
 
                 </ul>
             </li>

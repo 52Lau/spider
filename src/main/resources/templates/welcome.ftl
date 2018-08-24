@@ -6,7 +6,7 @@
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="${request.contextPath}/static/js/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./static/css/font.css">
         <link rel="stylesheet" href="./static/css/xadmin.css">
         <script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>

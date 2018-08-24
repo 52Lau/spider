@@ -128,11 +128,12 @@
                     var index = parent.layer.getFrameIndex(window.name);
                     parent.layer.close(index);*/
 
-                    /*layer.msg('玩命卖萌中', function(){
-                        layer.close(index);
-                        layui.table.reload('youtubeTable',{page:{curr:1}});
-                    });*/
-                    layer.msg("添加成功", {icon: 6});
+                    layer.msg('玩命卖萌中', function(){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        parent.layui.table.reload('youtubeTable',{page:{curr:1}});
+                    });
+                    //layer.msg("添加成功", {icon: 6});
                 } else {
                     layer.msg("添加失败", {icon: 5});
                 }

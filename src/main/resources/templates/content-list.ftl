@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="${request.contextPath}/static/js/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./static/css/font.css">
     <link rel="stylesheet" href="./static/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -120,7 +120,7 @@
             var data = obj.data,
                     layEvent = obj.event;
             if (layEvent === 'detail') {
-                x_admin_show('查看', '/content/get/'+data.id, 1200, 800)
+                x_admin_show('查看', '/content/get/'+data.id, 1200, 600)
                 //x_admin_show('查看', '/youtube/get/'+data.id, 600, 400)
             } else if (layEvent === 'edit') {
                 x_admin_show('编辑', '/content/get/' + data.id, 1200, 800)

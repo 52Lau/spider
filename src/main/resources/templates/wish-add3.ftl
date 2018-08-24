@@ -34,12 +34,12 @@
 <div class="x-body" id="myDiv">
     <form class="layui-form" id="form1" >
 
-        <div class="layui-form-item layui-form-text">
+        <#--<div class="layui-form-item layui-form-text">
             <label class="layui-form-label">id</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            </div>
-        </div>
+            <div class="layui-input-block">-->
+                <input type="hidden" id="id" name="id" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" value="${content.id}">
+           <#-- </div>
+        </div>-->
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">需求</label>
@@ -97,11 +97,14 @@
     });
 </script>
 
-<script type="text/javascript">
-    var E = window.wangEditor
-    var editor = new E('#editor')
 
-    editor.create()
+<script type="text/javascript">
+
+        var E = window.wangEditor
+        var editor = new E('#editor')
+
+        editor.create()
+
     $.fn.serializeObject = function()
     {
         var o = {};
@@ -119,7 +122,7 @@
         return o;
     };
     function login() {
-        var id=$(“#id).val();
+        var id=$("#id").val();
         var  typeid=$("#typeid").val();
         var obj={"id":id,"typeid": typeid,"context":editor.txt.html()};
         $.ajax({
@@ -137,11 +140,12 @@
                     var index = parent.layer.getFrameIndex(window.name);
                     parent.layer.close(index);*/
 
-                    /*layer.msg('玩命卖萌中', function(){
-                        layer.close(index);
-                        layui.table.reload('youtubeTable',{page:{curr:1}});
-                    });*/
-                    layer.msg("更新成功", {icon: 6});
+                    layer.msg('玩命卖萌中', function(){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        parent.layui.table.reload('youtubeTable',{page:{curr:1}});
+                    });
+                    //layer.msg("更新成功", {icon: 6});
                 } else {
                     layer.msg("更新失败", {icon: 5});
                 }
@@ -149,26 +153,7 @@
 
         });
     }
-
 </script>
-<#--<script>
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "/category/get/2",
-            success: function (data) {
-                //for (var i = 0; i < data.length; i++) {
-                for (var i in data) {
-                    $("#typeid").append("<option value= '"+data[i].catid +"'>"+data[i].catname+"</option>");
-                }
-
-                //alert(data.catname)
-
-                //}
-            }
-        });
-    });
-</script>-->
 </body>
 
 </html>
