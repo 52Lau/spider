@@ -23,6 +23,7 @@
         <java.version>1.8</java.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <hutool-all.version>4.0.12</hutool-all.version>
     </properties>
 
     <dependencies>
@@ -47,6 +48,13 @@
             <version>0.1.5</version>
         </dependency>-->
 
+
+        <!-- hutool工具包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-all.version}</version>
+        </dependency>
 
         <!--log4j-->
         <dependency>
