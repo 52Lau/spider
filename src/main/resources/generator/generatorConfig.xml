@@ -20,9 +20,9 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://132.232.26.166:3306/baidu"
-                        userId="baidu"
-                        password="88Eai8BK8ZzSmDYB">
+                        connectionURL="jdbc:mysql://117.50.56.122:3306/baidu_lau52y"
+                        userId="root"
+                        password="MMM110406">
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.lau.spider.model" targetProject="src/main/java"/>
@@ -32,12 +32,13 @@
         <javaClientGenerator targetPackage="com.lau.spider.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="category" delimitAllColumns="true">
+        <table tableName="githubuserinfo" delimitAllColumns="true">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->
             <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
         </table>
 
+        <!--mvn mybatis-generator:generate-->
     </context>
 </generatorConfiguration>

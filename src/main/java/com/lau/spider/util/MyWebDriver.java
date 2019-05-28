@@ -11,7 +11,7 @@ import java.util.List;
  * Created by deng on 2017/5/16.
  */
 public class MyWebDriver {
-    private final static String CHROME_DRIVER_PATH = "D:\\BaiduYunDownload\\chromedriver_win32\\chromedriver.exe";
+    private final static String CHROME_DRIVER_PATH = "C:\\Users\\kaifa011\\Downloads\\chromedriver_win32\\chromedriver.exe";
 
     public static WebDriver createWebDriver() {
         ChromeOptions options = new ChromeOptions();

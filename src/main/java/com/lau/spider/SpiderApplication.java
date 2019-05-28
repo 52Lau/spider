@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import java.util.List;
 @EnableWebMvc
 @SpringBootApplication
 @MapperScan(basePackages = "com.lau.spider.mapper")
+/*@EntityScan(basePackages={"com.lau.spider.GithubSpider.dto"})*/
 public class SpiderApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
     private Logger logger = LoggerFactory.getLogger(SpiderApplication.class);
     public static void main(String[] args) {
