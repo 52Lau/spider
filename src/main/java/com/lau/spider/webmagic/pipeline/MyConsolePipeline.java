@@ -2,7 +2,6 @@ package com.lau.spider.webmagic.pipeline;
 
 import com.lau.spider.mapper.ImoocMapper;
 import com.lau.spider.model.Imooc;
-import com.lau.spider.service.ImoocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
