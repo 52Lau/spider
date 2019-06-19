@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lau.spider.mapper.GithubuserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lau.spider.model.Githubuserinfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="bio" property="bio" jdbcType="VARCHAR" />
+    <result column="blog" property="blog" jdbcType="VARCHAR" />
+    <result column="collaborators" property="collaborators" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="VARCHAR" />
+    <result column="disk_usage" property="diskUsage" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="events_url" property="eventsUrl" jdbcType="VARCHAR" />
+    <result column="followers" property="followers" jdbcType="INTEGER" />
+    <result column="followers_url" property="followersUrl" jdbcType="VARCHAR" />
+    <result column="following" property="following" jdbcType="INTEGER" />
+    <result column="following_url" property="followingUrl" jdbcType="VARCHAR" />
+    <result column="gists_url" property="gistsUrl" jdbcType="VARCHAR" />
+    <result column="gravatar_id" property="gravatarId" jdbcType="VARCHAR" />
+    <result column="hireable" property="hireable" jdbcType="VARCHAR" />
+    <result column="html_url" property="htmlUrl" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="login" property="login" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="node_id" property="nodeId" jdbcType="VARCHAR" />
+    <result column="organizations_url" property="organizationsUrl" jdbcType="VARCHAR" />
+    <result column="owned_private_repos" property="ownedPrivateRepos" jdbcType="INTEGER" />
+    <result column="private_gists" property="privateGists" jdbcType="INTEGER" />
+    <result column="public_gists" property="publicGists" jdbcType="INTEGER" />
+    <result column="public_repos" property="publicRepos" jdbcType="INTEGER" />
+    <result column="received_events_url" property="receivedEventsUrl" jdbcType="VARCHAR" />
+    <result column="repos_url" property="reposUrl" jdbcType="VARCHAR" />
+    <result column="site_admin" property="siteAdmin" jdbcType="BIT" />
+    <result column="starred_url" property="starredUrl" jdbcType="VARCHAR" />
+    <result column="subscriptions_url" property="subscriptionsUrl" jdbcType="VARCHAR" />
+    <result column="total_private_repos" property="totalPrivateRepos" jdbcType="INTEGER" />
+    <result column="two_factor_authentication" property="twoFactorAuthentication" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

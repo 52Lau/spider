@@ -8,9 +8,6 @@ import com.lau.spider.delayMQ.constants.MessageQueueConstants;
 import com.lau.spider.delayMQ.service.IMessageQueueService;
 import com.lau.spider.rabbitmq.GitHubMessage;
 import com.lau.spider.redis.RedisService;
-import com.lau.spider.repository.GitHubRepository;
-import com.lau.spider.repository.GitHubUserRepository;
-import com.lau.spider.service.GitHubService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -18,8 +15,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +26,7 @@ public class HelloProcessor {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
-    @Autowired
+    /*@Autowired
     RedisService redisService;
 
     @Autowired
@@ -44,7 +39,7 @@ public class HelloProcessor {
     private GitHubRepository gitHubRepository;
 
     @Autowired
-    private GitHubUserRepository gitHubUserRepository;
+    private GitHubUserRepository gitHubUserRepository;*/
 
     static HashMap<String, Object > headers = new HashMap<String, Object>(){{
         put("User-Agent","Mozilla/5.0");
@@ -67,7 +62,7 @@ public class HelloProcessor {
         for (GitHubUserRepo repo:repoList){
             //存取用户仓库信息
             try {
-                gitHubRepository.insert(repo);
+                //gitHubRepository.insert(repo);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -75,7 +70,7 @@ public class HelloProcessor {
         GitHubUserInfo gitHubUserInfo =gen_user_page_url(gitMsg.getUsername());
         //无则增之，有则改之
         if (gitHubUserInfo!=null){
-            gitHubUserRepository.save(gitHubUserInfo);
+            //gitHubUserRepository.save(gitHubUserInfo);
         }
     }
 
